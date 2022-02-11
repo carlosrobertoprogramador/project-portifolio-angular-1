@@ -5,6 +5,7 @@ import { MarvelHomeRoutingModule } from './marvel-home-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from '../app.component';
 import { MarvelHomeComponent } from './marvel-home.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { MarvelHomeComponent } from './marvel-home.component';
   imports: [
     BrowserModule,
     CommonModule,
-    MarvelHomeRoutingModule
+    MarvelHomeRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
     bootstrap: [MarvelHomeComponent]
