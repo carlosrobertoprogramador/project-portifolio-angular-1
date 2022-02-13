@@ -9,6 +9,7 @@ import { Comic } from './../../../../classes/comic';
 })
 export class ShowCardsComponent implements OnInit {
   @Input() comics: Comic[] = [];
+  @Input() rare: boolean = false;
   @Input() name: string = '';
 
   constructor(private route: Router) { }
