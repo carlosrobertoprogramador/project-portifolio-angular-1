@@ -33,6 +33,13 @@ import { CheckoutCouponComponent } from './components/checkout/checkout-coupon/c
 import { CheckoutDataComponent } from './components/checkout/checkout-data/checkout-data.component';
 import { CheckoutValidateComponent } from './components/checkout/checkout-validate/checkout-validate.component';
 import { CheckoutFinishedComponent } from './components/checkout/checkout-finished/checkout-finished.component';
+import { CheckoutImageComponent } from './components/checkout/checkout-image/checkout-image.component';
+import { CheckoutTitleComponent } from './components/checkout/checkout-title/checkout-title.component';
+import { FavoritesComponent } from './components/favorites/favorites.component';
+import { RegisterDataComponent } from './components/register-data/register-data.component';
+import { GenerateComicsRareComponent } from './components/generate-comics-rare/generate-comics-rare.component';
+import { GenerateCouponsComponent } from './components/generate-coupons/generate-coupons.component';
+import { HistoryComponent } from './components/history/history.component';
 
 
 @NgModule({
@@ -49,6 +56,13 @@ import { CheckoutFinishedComponent } from './components/checkout/checkout-finish
     CheckoutDataComponent,
     CheckoutValidateComponent,
     CheckoutFinishedComponent,
+    CheckoutImageComponent,
+    CheckoutTitleComponent,
+    FavoritesComponent,
+    RegisterDataComponent,
+    GenerateComicsRareComponent,
+    GenerateCouponsComponent,
+    HistoryComponent,
   ],
 
   imports: [
