@@ -1,0 +1,29 @@
+<mat-card class="example-card" width="100%">
+  <mat-card-header>
+    <mat-card-title>Detalhes da sua compra</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="flex-container" fxLayout="column" fxLayoutAlign="space-around none">
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <p> Produtos </p>
+        <p> 1,00 </p>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="space-between center" style="margin-bottom: 20px;">
+        <p> Descontos </p>
+        <p> 0,00 </p>
+      </div>
+      <mat-divider></mat-divider>
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <p> Total para pagamento </p>
+        <p> <b> 1,00 </b> </p>
+      </div>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <div class="flex-container" fxLayout="column" fxLayoutAlign="space-around none">
+      <button mat-raised-button disabled color="primary">
+        <mat-icon>attach_money</mat-icon> PAGAR
+      </button>
+    </div>
+  </mat-card-actions>
+</mat-card>

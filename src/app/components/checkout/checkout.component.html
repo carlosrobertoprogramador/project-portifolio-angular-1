@@ -1,1 +1,60 @@
-<p>checkout works!</p>
+<div *ngIf="comic">
+  <div style="
+        position: fixed;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        opacity: 0.1;
+        height: 100%; width: 100%;
+        background: url({{ comic.thumbnail.path+'.'+comic.thumbnail.extension }});
+    ">
+  </div>
+  <div fxLayout="collum" style="padding: 30px;">
+    <div fxFlex="23">
+      <div fxLayout="column">
+        <section fxLayoutAlign="center center">
+          <mat-card class="example-card">
+            <picture>
+              <img mat-card-image src="{{ comic.thumbnail.path+'.'+comic.thumbnail.extension }}"
+                alt="Photo of a Shiba Inu" class="card-image">
+            </picture>
+          </mat-card>
+        </section>
+        <section fxLayoutAlign="center center" style="margin-top: 10px;">
+          <app-checkout-coupon></app-checkout-coupon>
+        </section>
+      </div>
+    </div>
+    <div fxFlex="87" style="padding-left: 30px;">
+      <div class="flex-container" fxLayout="column" fxLayoutAlign="space-around none">
+        <section>
+          <h1>
+            <p>
+              <b>
+                {{ comic.title }}
+              </b>
+            </p>
+          </h1>
+        </section>
+        <section>
+          <div fxLayout="collum" style="padding-top: 30px;">
+            <div fxFlex="77">
+              <div class="flex-container" fxLayout="column" fxLayoutAlign="space-between none">
+                <section>
+                  <app-checkout-data></app-checkout-data>
+                </section>
+              </div>
+            </div>
+            <div fxFlex="33">
+              <div fxLayout="column">
+                <section fxLayoutAlign="center center">
+                  <app-checkout-detail></app-checkout-detail>
+                </section>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>

@@ -25,7 +25,14 @@ import { CarrouselComponent } from './components/comics/list/carrousel/carrousel
 import { MatCarouselModule } from '@ngmodule/material-carousel';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 import { ShowCardsComponent } from './components/comics/list/show-cards/show-cards.component';
+import { CheckoutDetailComponent } from './components/checkout/checkout-detail/checkout-detail.component';
+import { CheckoutCouponComponent } from './components/checkout/checkout-coupon/checkout-coupon.component';
+import { CheckoutDataComponent } from './components/checkout/checkout-data/checkout-data.component';
+import { CheckoutValidateComponent } from './components/checkout/checkout-validate/checkout-validate.component';
+import { CheckoutFinishedComponent } from './components/checkout/checkout-finished/checkout-finished.component';
 
 
 @NgModule({
@@ -35,8 +42,13 @@ import { ShowCardsComponent } from './components/comics/list/show-cards/show-car
     DetailComponent,
     MenuComponent,
     CheckoutComponent,
+    CheckoutDetailComponent,
     CarrouselComponent,
     ShowCardsComponent,
+    CheckoutCouponComponent,
+    CheckoutDataComponent,
+    CheckoutValidateComponent,
+    CheckoutFinishedComponent,
   ],
 
   imports: [
@@ -59,6 +71,8 @@ import { ShowCardsComponent } from './components/comics/list/show-cards/show-car
     MatExpansionModule,
     MatSnackBarModule,
     MatDividerModule,
+    MatSelectModule,
+    MatInputModule,
     MatCarouselModule.forRoot()
   ],
 
