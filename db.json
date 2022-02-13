@@ -1,0 +1,16 @@
+{
+  "comics": [
+    {
+      "id": 1,
+      "name": "capitao america"
+    },
+    {
+      "id": 2,
+      "name": "homem aranha"
+    },
+    {
+      "id": 3,
+      "name": "homem de ferro"
+    }
+  ]
+}
