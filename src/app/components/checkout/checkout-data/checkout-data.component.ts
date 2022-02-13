@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-checkout-data',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./checkout-data.component.scss']
 })
 export class CheckoutDataComponent implements OnInit {
+  @Input() form: FormGroup;
+
   public methodsPayments = [
     { label: 'Boleto', value: 'bol' },
     { label: 'Cartão', value: 'card' },

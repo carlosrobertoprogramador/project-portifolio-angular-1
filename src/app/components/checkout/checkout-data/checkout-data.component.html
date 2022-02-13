@@ -1,49 +1,56 @@
-  <mat-card class="example-card" width="100%">
-    <mat-card-content>
-      <h4>Método de pagamento</h4>
-      <mat-form-field appearance="fill" style="width: 100%">
-        <mat-label>Escolher</mat-label>
-        <mat-select>
-          <mat-option *ngFor="let methodPayment of methodsPayments" [value]="methodPayment.value">
-            {{methodPayment.label}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </mat-card-content>
-  </mat-card>
-  <mat-card class="example-card" width="100%" style="margin-top: 30px;">
-    <mat-card-content>
-      <h4>Método de pagamento do cartão</h4>
-      <mat-form-field appearance="fill" style="width: 100%">
-        <mat-label>Escolher</mat-label>
-        <mat-select>
-          <mat-option *ngFor="let methodPaymentCard of methodsPaymentsCard" [value]="methodPaymentCard.value">
-            {{methodPaymentCard.label}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </mat-card-content>
-  </mat-card>
-  <mat-card class="example-card" width="100%" style="margin-top: 30px;">
-    <mat-card-content>
-      <h4>Selecione a parcela</h4>
-      <mat-form-field appearance="fill" style="width: 100%">
-        <mat-label>Escolher</mat-label>
-        <mat-select>
-          <mat-option *ngFor="let installmentPaymentCard of installmentsPaymentsCard" [value]="installmentPaymentCard.value">
-            {{installmentPaymentCard.label}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </mat-card-content>
-  </mat-card>
-  <mat-card class="example-card" width="100%" style="margin-top: 30px;">
-    <mat-card-content>
-      <h4>Digite o número do cartão</h4>
-      <form class="example-form">
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Ex. 123123" value="">
-        </mat-form-field>
-      </form>
-    </mat-card-content>
-  </mat-card>
+  <form [formGroup]="form" *ngIf="form">
+    <div class="flex-container" fxLayout="column" fxLayoutAlign="space-between none">
+      <section>
+        <mat-card width="100%">
+          <mat-card-content>
+            <h4>Método de pagamento</h4>
+            <mat-form-field appearance="fill" style="width: 100%">
+              <mat-label>Escolher</mat-label>
+              <mat-select formControlName="methodPayment">
+                <mat-option *ngFor="let methodPayment of methodsPayments" [value]="methodPayment.value">
+                  {{methodPayment.label}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-card-content>
+        </mat-card>
+        <div *ngIf="form.get('methodPayment').value === 'card'">
+          <mat-card width="100%" style="margin-top: 30px;">
+            <mat-card-content>
+              <h4>Método de pagamento do cartão</h4>
+              <mat-form-field appearance="fill" style="width: 100%">
+                <mat-label>Escolher</mat-label>
+                <mat-select formControlName="methodPaymentCard">
+                  <mat-option *ngFor="let methodPaymentCard of methodsPaymentsCard" [value]="methodPaymentCard.value">
+                    {{methodPaymentCard.label}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </mat-card-content>
+          </mat-card>
+          <mat-card width="100%" style="margin-top: 30px;" *ngIf="form.get('methodPaymentCard').value === 'credit'">
+            <mat-card-content>
+              <h4>Selecione a parcela</h4>
+              <mat-form-field appearance="fill" style="width: 100%">
+                <mat-label>Escolher</mat-label>
+                <mat-select formControlName="installmentPaymentCard">
+                  <mat-option *ngFor="let installmentPaymentCard of installmentsPaymentsCard"
+                    [value]="installmentPaymentCard.value">
+                    {{installmentPaymentCard.label}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </mat-card-content>
+          </mat-card>
+          <mat-card width="100%" style="margin-top: 30px;">
+            <mat-card-content>
+              <h4>Digite o número do cartão</h4>
+              <mat-form-field class="example-full-width">
+                <input type='number' formControlName="cardNumber" matInput placeholder="Ex. 123123" value="">
+              </mat-form-field>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </section>
+    </div>
+  </form>

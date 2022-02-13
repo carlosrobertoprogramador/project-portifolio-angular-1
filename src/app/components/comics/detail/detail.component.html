@@ -1,5 +1,5 @@
 <div *ngIf="comic">
-  <div style="
+<div style="
         position: fixed;
         background-repeat: no-repeat;
         background-size: cover;
@@ -8,7 +8,7 @@
         height: 100%; width: 100%;
         background: url({{ comic.thumbnail.path+'.'+comic.thumbnail.extension }});
     ">
-  </div>
+</div>
   <div fxLayout="collum" style="padding: 30px;">
     <div fxFlex="33">
       <div fxLayout="column">
@@ -30,13 +30,21 @@
     <div fxFlex="77" style="padding-left: 30px;">
       <div class="flex-container" fxLayout="column" fxLayoutAlign="space-around none">
         <section>
-          <h1>
-            <p>
-              <b>
-                {{ comic.title }}
-              </b>
-            </p>
-          </h1>
+          <div class="flex-container" fxLayout="row" fxLayoutAlign="start none">
+            <div *ngIf="rare" style="margin-right: 30px; ">
+              <mat-icon style="transform: scale(1.5); color: rgb(0, 255, 13)">star</mat-icon>
+            </div>
+            <div>
+              <h1>
+                <p>
+                  <b>
+                    {{ comic.title }}
+                  </b>
+                </p>
+              </h1>
+            </div>
+          </div>
+
         </section>
         <section *ngIf="comic.prices">
           <h1>
