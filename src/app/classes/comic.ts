@@ -70,7 +70,7 @@ class ComicSummary {
   resourceURI: string;
 }
 
-class ComicPrice {
+export class ComicPrice {
   price: number;
   type: string;
 }

@@ -23,11 +23,11 @@ export class ShowCardsComponent implements OnInit {
   }
 
   navigateDetail(id) {
-    this.route.navigate([`/comic/detail/${id}`])
+    this.route.navigate([`/comic/${id}/detail`])
   }
 
   navigateCheckout(id) {
-    this.route.navigate([`/comic/checkout/${id}`])
+    this.route.navigate([`/comic/${id}/checkout`])
   }
 
 }

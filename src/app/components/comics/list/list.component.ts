@@ -1,7 +1,7 @@
 import { Component, OnInit} from '@angular/core';
-import { ComicService } from '../../../services/api.service';
 import { Comic } from './../../../classes/comic';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ApiService } from './../../../services/api.service';
 
 @Component({
   selector: 'app-comics-list',
@@ -14,10 +14,10 @@ export class ListComponent implements OnInit {
   public comicsCommon: Comic[] = [];
   public sliderImages: string[] = [];
 
-  constructor(private comicService: ComicService, private snackBar: MatSnackBar) { }
+  constructor(private apiService: ApiService, private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
-    this.comicService.getComics().then((comics => {
+    this.apiService.getComics().then((comics => {
       this.getQuantityComicsRare(comics)
       const quantityComicsRare = this.getQuantityComicsRare(comics);
       if (quantityComicsRare > 0) {
