@@ -1,0 +1,66 @@
+@import "~@angular/material/theming";
+
+$primaryPalette: mat-palette($mat-indigo);
+
+mat-toolbar {
+    justify-content: space-between;
+}
+
+mat-card img{
+ height: 300px;
+margin-top: -15px;
+}
+
+mat-card {
+ height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+mat-card-content {
+  flex: 1;
+  margin-bottom: -27px;
+}
+
+.content {
+    padding: 16px;
+}
+
+.content > mat-card {
+    margin-bottom: 16px;
+}
+
+.column-label {
+    margin-right: 8px;
+    font-size: 1rem;
+}
+
+.max-line {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pointer {
+   cursor: pointer;
+}
+
+.shadow-card {
+  top:0;
+  box-shadow:0;
+  transition: 0.3s;
+}
+
+.shadow-card:hover {
+  top:-10px;box-shadow:0 10px 10px mat-color($primaryPalette);
+}
+
+.shadow-button {
+  transition:  0.3s;
+}
+
+.shadow-button:hover {
+  transform: scale(1.2);
+}
