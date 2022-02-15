@@ -10,7 +10,7 @@ import { Storie } from '../classes/storie';
 @Injectable({
   providedIn: 'root'
 })
-export class ApiService {
+export class ApiMarvelService {
   private md5 = new Md5();
   private publicKey = "6187c0cda296b012c9069d564b82de9d"
   private privateKey = "8bcbd1a4c2a05485d19ea6e13cba1619b5e50989"
@@ -18,8 +18,6 @@ export class ApiService {
   private hash = this.md5.appendStr(this.time + this.privateKey + this.publicKey).end()
   private urlMarvel = "http://gateway.marvel.com/v1/public/"
   private paramsMarvel = `ts=${this.time}&apikey=${this.publicKey}&hash=${this.hash}`;
-
-  private urlLocal = "http://localhost:3000/"
 
   constructor(private httpClient: HttpClient) { }
 
@@ -40,7 +38,6 @@ export class ApiService {
       }
     );
   }
-
 
   getComic(id: number): Promise<Comic> {
     return this.httpClient.get<Comic>(`${this.urlMarvel}comics/${id}?${this.paramsMarvel}`).toPromise().then(

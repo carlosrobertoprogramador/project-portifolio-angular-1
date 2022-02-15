@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Comic } from './../../../classes/comic';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ApiService } from './../../../services/api.service';
+import { ApiMarvelService } from '../../../services/api-marvel.service';
 import { StorageService } from './../../../services/storage.service';
 import { ComicsService } from './../../../services/comics.service';
 
@@ -19,7 +19,7 @@ export class ListComponent implements OnInit {
   constructor(
     private comicsService: ComicsService,
     private storageService: StorageService,
-    private apiService: ApiService,
+    private apiService: ApiMarvelService,
     private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {

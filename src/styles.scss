@@ -2,3 +2,13 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.required{
+  background-color: rgb(246, 225, 225);
+  border-radius: 8px;
+}
+
+.text-required{
+  color: red;
+  text-align: center;
+}

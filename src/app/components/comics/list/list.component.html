@@ -9,10 +9,10 @@
 <app-carrousel *ngIf="sliderImages.length > 0" [sliderImages]="sliderImages"></app-carrousel>
 
 <div *ngIf="comicsRare.length > 0">
-  <app-show-cards [comics]="comicsRare" [name]="'QUADRINHOS RAROS'" [rare]="true"></app-show-cards>
+  <app-show-cards [comics]="comicsRare" [name]="'RARIDADES'" [rare]="true"></app-show-cards>
 </div>
 
 <div *ngIf="comicsCommon.length > 0">
-  <app-show-cards [comics]="comicsCommon" [name]="'QUADRINHOS COMUNS'">
+  <app-show-cards [comics]="comicsCommon" [name]="'OUTROS'">
   </app-show-cards>
 </div>

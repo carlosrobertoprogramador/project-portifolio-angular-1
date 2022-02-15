@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ApiService } from './../../../services/api.service';
+import { ApiMarvelService } from '../../../services/api-marvel.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Comic, ComicPrice } from './../../../classes/comic';
 import { StorageService } from './../../../services/storage.service';
@@ -17,7 +17,7 @@ export class DetailComponent implements OnInit {
 
   constructor(
     private storageService: StorageService,
-    private apiService: ApiService,
+    private apiMarvelService: ApiMarvelService,
     private snackBar: MatSnackBar,
     private route: ActivatedRoute
   ) { }
@@ -27,7 +27,7 @@ export class DetailComponent implements OnInit {
 
     this.id = this.route.snapshot.params.id;
 
-    this.apiService.getComic(this.id).then((comic => {
+    this.apiMarvelService.getComic(this.id).then((comic => {
       if (comicsRares.includes(comic.id)) {
         this.rare = true;
       } else {

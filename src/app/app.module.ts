@@ -27,6 +27,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { MatTableModule } from '@angular/material/table';
 import { ShowCardsComponent } from './components/comics/list/show-cards/show-cards.component';
 import { CheckoutDetailComponent } from './components/checkout/checkout-detail/checkout-detail.component';
 import { CheckoutCouponComponent } from './components/checkout/checkout-coupon/checkout-coupon.component';
@@ -38,8 +39,11 @@ import { CheckoutTitleComponent } from './components/checkout/checkout-title/che
 import { FavoritesComponent } from './components/favorites/favorites.component';
 import { RegisterDataComponent } from './components/register-data/register-data.component';
 import { GenerateComicsRareComponent } from './components/generate-comics-rare/generate-comics-rare.component';
-import { GenerateCouponsComponent } from './components/generate-coupons/generate-coupons.component';
 import { HistoryComponent } from './components/history/history.component';
+import { CouponsCreateComponent } from './components/coupons/coupons-create/coupons-create.component';
+import { CouponsUpdateComponent } from './components/coupons/coupons-update/coupons-update.component';
+import { CouponsTemplateFormComponent } from './components/coupons/coupons-template-form/coupons-template-form.component';
+import { CouponsComponent } from './components/coupons/coupons.component';
 
 
 @NgModule({
@@ -61,8 +65,11 @@ import { HistoryComponent } from './components/history/history.component';
     FavoritesComponent,
     RegisterDataComponent,
     GenerateComicsRareComponent,
-    GenerateCouponsComponent,
     HistoryComponent,
+    CouponsCreateComponent,
+    CouponsUpdateComponent,
+    CouponsComponent,
+    CouponsTemplateFormComponent,
   ],
 
   imports: [
@@ -87,6 +94,7 @@ import { HistoryComponent } from './components/history/history.component';
     MatDividerModule,
     MatSelectModule,
     MatInputModule,
+    MatTableModule,
     MatCarouselModule.forRoot()
   ],
 

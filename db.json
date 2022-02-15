@@ -1,16 +1,19 @@
 {
-  "comics": [
+  "coupons": [
     {
-      "id": 1,
-      "name": "capitao america"
+      "name": "PROMO10",
+      "type": "common",
+      "id": 1
     },
     {
-      "id": 2,
-      "name": "homem aranha"
+      "name": "PROMO18",
+      "type": "rare",
+      "id": 2
     },
     {
-      "id": 3,
-      "name": "homem de ferro"
+      "name": "PROMO20",
+      "type": "common",
+      "id": 3
     }
   ]
 }

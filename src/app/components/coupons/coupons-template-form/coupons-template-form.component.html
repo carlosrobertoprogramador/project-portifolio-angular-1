@@ -1,0 +1,31 @@
+<div fxLayout="column" fxLayoutGap="30px" fxLayoutAlign="space-between center">
+  <section fxLayoutAlign="center center">
+    <form [formGroup]="form" *ngIf="form" fxFlex="50">
+      <mat-card fxLayoutGap="30px">
+        <div>
+          <h4>Nome do cupom</h4>
+          <mat-form-field style="width: 100%" [ngClass]="isSubmted && form.get('name').errors ? 'required': ''">
+            <input type='text' formControlName="name" matInput placeholder="Ex. PROMO10">
+          </mat-form-field>
+          <div *ngIf="isSubmted && form.get('name').errors" class="text-required">Campo obrigatorio</div>
+        </div>
+        <div>
+          <h4>Tipo do cupom</h4>
+          <mat-form-field appearance="fill" style="width: 100%"
+            [ngClass]="isSubmted && form.get('type').errors ? 'required': ''">
+            <mat-label>Escolher</mat-label>
+            <mat-select formControlName="type">
+              <mat-option *ngFor="let type of types" [value]="type.value">
+                {{type.label}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div *ngIf="isSubmted && form.get('type').errors" class="text-required">Campo obrigatorio</div>
+        </div>
+      </mat-card>
+    </form>
+  </section>
+  <section fxLayoutAlign="center center">
+    <button mat-raised-button color="primary" (click)="onSubmit()"> Cadastrar </button>
+  </section>
+</div>
