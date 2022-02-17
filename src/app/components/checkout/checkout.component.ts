@@ -30,7 +30,6 @@ export class CheckoutComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.createForm();
-    console.log(this.form.get('coupon').value);
 
     const comicsRares: any = this.storageService.getStorage('comicsRares');
 

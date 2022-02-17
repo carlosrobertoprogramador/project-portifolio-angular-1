@@ -13,7 +13,6 @@ export class ApiCouponService {
   createCoupon(data) {
     return this.httpClient.post(`${this.urlLocal}coupons`, data).toPromise().then(
       result => {
-        console.log(result);
       });
   }
 
@@ -21,7 +20,6 @@ export class ApiCouponService {
   updateCoupon(id, data) {
     return this.httpClient.put(`${this.urlLocal}coupons/${id}`, data).toPromise().then(
       result => {
-        console.log(result);
       });
   }
 

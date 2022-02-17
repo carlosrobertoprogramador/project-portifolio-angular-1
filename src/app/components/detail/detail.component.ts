@@ -37,7 +37,6 @@ export class DetailComponent implements OnInit {
       } else {
         this.rare = false;
       }
-      console.log(comic);
       this.comic = comic;
     })).catch((error => {
       console.error(error);

@@ -49,7 +49,6 @@ export class CheckoutCouponComponent implements OnInit {
         duration: 3000
       })
     })
-    console.log(this.form);
   }
 
 }
