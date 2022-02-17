@@ -28,7 +28,7 @@ Tabela de conteúdos
 <a id="sobre"></a>
 ## Sobre o projeto
 
-  Este software é um método de avaliação do conhecimento e senioridade para o ingresso em empresa de desenvolvimento de software.
+  Este software é apenas para demonstração de codificação, um método de avaliação do conhecimento e senioridade para o ingresso em empresa de desenvolvimento de software.
 
   O projeto consiste na exibição de uma listagem de quadrinhos da Marvel, permitindo visualizar mais detalhes e possibilitando a compra do mesmo. Existe o meio de compra utilizando cupom de desconto, onde este não é acumulativo por quadrinho, lembrando também que o valor do desconto é somente até o total atingir o limite mínimo de R$ 0,00 (zero real).
   
