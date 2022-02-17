@@ -31,21 +31,22 @@ export class DetailComponent implements OnInit {
 
     this.id = this.route.snapshot.params.id;
 
-    this.apiMarvelService.getComic(this.id).then((comic => {
-      if (comicsRares && comicsRares.includes(comic.id)) {
-        this.rare = true;
-      } else {
-        this.rare = false;
-      }
-      this.comic = comic;
-    })).catch((error => {
-      console.error(error);
-      if (error.message) {
-        this.snackBar.open(error.message)
-      } else {
-        this.snackBar.open('Erro interno, contate o suporte por favor!', 'Erro', { duration: 3000 })
-      }
-    }));
+    this.apiMarvelService.getComic(this.id)
+      .then((comic => {
+        if (comicsRares && comicsRares.includes(comic.id)) {
+          this.rare = true;
+        } else {
+          this.rare = false;
+        }
+        this.comic = comic;
+      }))
+      .catch((error => {
+        if (error.message) {
+          this.snackBar.open(error.message, 'Erro', { duration: 8000 })
+        } else {
+          this.snackBar.open('Erro interno, contate o suporte por favor!', 'Erro', { duration: 8000 })
+        }
+      }));
 
     this.apiComicService.getComicPurchase(this.id).then(comic => {
       this.isPurchase = true;
@@ -66,8 +67,12 @@ export class DetailComponent implements OnInit {
         this.isFavorite = true;
         this.snackBar.open('Adicionado com sucesso aos favoritos!', 'Sucesso', { duration: 3000 })
       }
-    ).catch(err => {
-      this.snackBar.open('Erro interno, contate o suporte por favor!', 'Erro', { duration: 3000 })
+    ).catch(error => {
+      if (error.message) {
+        this.snackBar.open(error.message, 'Erro', { duration: 8000 })
+      } else {
+        this.snackBar.open('Erro interno, contate o suporte por favor!', 'Erro', { duration: 8000 })
+      }
     })
   }
 

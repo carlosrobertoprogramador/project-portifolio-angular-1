@@ -11,37 +11,24 @@ export class ApiCouponService {
   constructor(private httpClient: HttpClient) { }
 
   createCoupon(data) {
-    return this.httpClient.post(`${this.urlLocal}coupons`, data).toPromise().then(
-      result => {
-      });
+    return this.httpClient.post(`${this.urlLocal}coupons`, data).toPromise()
   }
 
 
   updateCoupon(id, data) {
-    return this.httpClient.put(`${this.urlLocal}coupons/${id}`, data).toPromise().then(
-      result => {
-      });
+    return this.httpClient.put(`${this.urlLocal}coupons/${id}`, data).toPromise()
   }
 
   getCoupons(): Promise<Coupon[]> {
-    return this.httpClient.get<Coupon[]>(`${this.urlLocal}coupons`).toPromise().then(
-      result => {
-        return result;
-      });
+    return this.httpClient.get<Coupon[]>(`${this.urlLocal}coupons`).toPromise()
   }
 
   getCoupon(id): Promise<Coupon> {
-    return this.httpClient.get<Coupon>(`${this.urlLocal}coupons/${id}`).toPromise().then(
-      result => {
-        return result;
-      });
+    return this.httpClient.get<Coupon>(`${this.urlLocal}coupons/${id}`).toPromise()
   }
 
   getCouponByName(name): Promise<Coupon[]> {
-    return this.httpClient.get<Coupon[]>(`${this.urlLocal}coupons?name=${name}`).toPromise().then(
-      result => {
-        return result;
-      });
+    return this.httpClient.get<Coupon[]>(`${this.urlLocal}coupons?name=${name}`).toPromise()
   }
 
   removeCoupon(id): Promise<Coupon> {

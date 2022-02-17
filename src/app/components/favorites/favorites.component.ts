@@ -24,20 +24,33 @@ export class FavoritesComponent implements OnInit {
   comics: Comic[];
 
   ngOnInit(): void {
-    this.apiComicService.getComicsFavorite().then(comics => {
-      this.comics = comics;
-    })
+    this.apiComicService.getComicsFavorite()
+      .then(comics => {
+        this.comics = comics;
+      })
+      .catch(error => {
+        if (error.message) {
+          this.snackBar.open(error.message, 'Erro', { duration: 8000 })
+        } else {
+          this.snackBar.open('Erro interno, contate o suporte por favor!', 'Erro', { duration: 8000 })
+        }
+      })
   }
 
   remove(id) {
 
-    this.apiComicService.removeComicFavorite(id).then(result => {
-      this.comics = this.comics.filter((comic) => {
-        return comic.id != id
+    this.apiComicService.removeComicFavorite(id)
+      .then(result => {
+        this.comics = this.comics.filter((comic) => {
+          return comic.id != id
+        })
+      }).catch(error => {
+        if (error.message) {
+          this.snackBar.open(error.message, 'Erro', { duration: 8000 })
+        } else {
+          this.snackBar.open('Erro interno, contate o suporte por favor!', 'Erro', { duration: 8000 })
+        }
       })
-    }).catch(err => {
-      this.snackBar.open('Erro interno, contate o suporte por favor!')
-    })
 
   }
 }

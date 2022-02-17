@@ -36,6 +36,7 @@ export class ApiComicService {
 
   createComicPurchase(data) {
     return this.httpClient.post(`${this.urlLocal}comics-purchase`, data).toPromise()
+
   }
 
   updateComicPurchase(id, data) {
@@ -47,7 +48,7 @@ export class ApiComicService {
   }
 
   getComicPurchase(id): Promise<Comic> {
-    return this.httpClient.get<Comic>(`${this.urlLocal}comics-purchase/${id}`).toPromise().then().catch()
+    return this.httpClient.get<Comic>(`${this.urlLocal}comics-purchase/${id}`).toPromise()
   }
 
   getComicPurchaseByName(name): Promise<Comic[]> {

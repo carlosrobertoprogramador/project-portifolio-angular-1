@@ -44,13 +44,13 @@ export class CheckoutComponent implements OnInit {
       this.comic = comic;
       this.form.get('price').setValue(this.getPrice(comic.prices))
     })).catch((error => {
-      console.error(error);
       if (error.message) {
-        this.snackBar.open(error.message)
+        this.snackBar.open(error.message, 'Erro', { duration: 8000 })
       } else {
-        this.snackBar.open('Erro interno, contate o suporte por favor!')
+        this.snackBar.open('Erro interno, contate o suporte por favor!', 'Erro', { duration: 8000 })
       }
     }));
+
   }
 
   createForm() {

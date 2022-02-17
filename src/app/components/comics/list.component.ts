@@ -23,37 +23,38 @@ export class ListComponent implements OnInit {
     private snackBar: MatSnackBar) { }
 
   async ngOnInit() {
-    this.apiMarvelService.getComics().then((async comics => {
-      let comicsRares: any = this.storageService.getStorage('comicsRares');
+    this.apiMarvelService.getComics()
+      .then((async comics => {
+        let comicsRares: any = this.storageService.getStorage('comicsRares');
 
-      const qtdComics = comics.length;
-      if (!comicsRares) {
-        const qtdRare = qtdComics * 10 / 100
-         comicsRares = this.comicsService.generateComicsRareRandom(comics, qtdRare)
-      }
-
-      comics.map((comic) => {
-        if (comicsRares && comicsRares.includes(comic.id)) {
-          const image = comic.images[0];
-          this.comicsRare.push(comic);
-          if (image) {
-            const path = image.path + '.' + image.extension;
-            this.sliderImages.push(path)
-          }
-        } else {
-          this.comicsCommon.push(comic);
+        const qtdComics = comics.length;
+        if (!comicsRares) {
+          const qtdRare = qtdComics * 10 / 100
+          comicsRares = this.comicsService.generateComicsRareRandom(comics, qtdRare)
         }
-      })
+
+        comics.map((comic) => {
+          if (comicsRares && comicsRares.includes(comic.id)) {
+            const image = comic.images[0];
+            this.comicsRare.push(comic);
+            if (image) {
+              const path = image.path + '.' + image.extension;
+              this.sliderImages.push(path)
+            }
+          } else {
+            this.comicsCommon.push(comic);
+          }
+        })
 
 
-    })).catch((error => {
-      console.error(error);
-      if (error.message) {
-        this.snackBar.open(error.message)
-      } else {
-        this.snackBar.open('Erro interno, contate o suporte por favor!')
-      }
-    }));
+      }))
+      .catch((error => {
+        if (error.message) {
+          this.snackBar.open(error.message, 'Erro', { duration: 8000 })
+        } else {
+          this.snackBar.open('Erro interno, contate o suporte por favor!', 'Erro', { duration: 8000 })
+        }
+      }));
   }
 
 

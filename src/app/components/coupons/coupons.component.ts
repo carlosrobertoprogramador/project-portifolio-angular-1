@@ -18,20 +18,33 @@ export class CouponsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.apiCouponService.getCoupons().then(coupons => {
-      this.coupons = coupons;
-    })
+    this.apiCouponService.getCoupons()
+      .then(coupons => {
+        this.coupons = coupons;
+      })
+      .catch(error => {
+        if (error.message) {
+          this.snackBar.open(error.message)
+        } else {
+          this.snackBar.open('Erro interno, contate o suporte por favor!', 'Erro', { duration: 3000 })
+        }
+      })
   }
 
   remove(id) {
-
-    this.apiCouponService.removeCoupon(id).then(result => {
-      this.coupons = this.coupons.filter((coupon) => {
-        return coupon.id != id
+    this.apiCouponService.removeCoupon(id)
+      .then(result => {
+        this.coupons = this.coupons.filter((coupon) => {
+          return coupon.id != id
+        })
       })
-    }).catch(err => {
-      this.snackBar.open('Erro interno, contate o suporte por favor!')
-    })
+      .catch(error => {
+        if (error.message) {
+          this.snackBar.open(error.message, 'Erro', { duration: 8000 })
+        } else {
+          this.snackBar.open('Erro interno, contate o suporte por favor!', 'Erro', { duration: 8000 })
+        }
+      })
 
   }
 

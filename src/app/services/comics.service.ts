@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { StorageService } from './storage.service';
 import { Comic } from './../classes/comic';
-import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'

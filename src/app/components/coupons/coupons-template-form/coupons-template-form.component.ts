@@ -1,7 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
 import { ApiCouponService } from 'src/app/services/api-coupon.service';
 
 @Component({
@@ -23,14 +22,22 @@ export class CouponsTemplateFormComponent implements OnInit {
   constructor(
     private apiCouponService: ApiCouponService,
     private builder: FormBuilder,
+    private snackBar: MatSnackBar,
   ) { }
 
   ngOnInit(): void {
     this.form = this.createForm();
     if (this.id) {
-      this.apiCouponService.getCoupon(this.id).then(coupon => {
-        this.fill(coupon)
-      })
+      this.apiCouponService.getCoupon(this.id)
+        .then(coupon => {
+          this.fill(coupon)
+        })
+        .catch(error => {
+          if (error.message) {
+            this.snackBar.open(error.message, 'Erro', { duration: 8000 })
+          } else {
+            this.snackBar.open('Erro interno, contate o suporte por favor!', 'Erro', { duration: 8000 })
+          }        })
     }
   }
 

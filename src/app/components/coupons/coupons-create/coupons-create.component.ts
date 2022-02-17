@@ -20,12 +20,16 @@ export class CouponsCreateComponent implements OnInit {
   }
 
   submitChange(data): void {
-    this.apiCouponService.createCoupon(data).then(result => {
-      this.snackBar.open('Cupom cadastrado com sucesso!')
-      this.router.navigate(['/coupons/list'])
-    }).catch(err => {
-      this.snackBar.open('Ocorreu um erro no cadastro do cupom, entre em contato com o suporte po favor!')
-    })
+    this.apiCouponService.createCoupon(data)
+      .then(result => {
+        this.snackBar.open('Cupom cadastrado com sucesso!')
+        this.router.navigate(['/coupons/list'])
+      }).catch(error => {
+        if (error.message) {
+          this.snackBar.open(error.message, 'Erro', { duration: 8000 })
+        } else {
+          this.snackBar.open('Erro interno, contate o suporte por favor!', 'Erro', { duration: 8000 })
+        }      })
   }
 
 }

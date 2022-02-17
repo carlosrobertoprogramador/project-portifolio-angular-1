@@ -11,7 +11,7 @@ import { ApiMarvelService } from './../../services/api-marvel.service';
   styleUrls: ['./generate-comics-rare.component.scss']
 })
 export class GenerateComicsRareComponent implements OnInit {
-  public spinner:boolean = false
+  public spinner: boolean = false
   constructor(
     private storageService: StorageService,
     private router: Router,
@@ -28,14 +28,24 @@ export class GenerateComicsRareComponent implements OnInit {
     this.storageService.removeItem('comicsRares')
 
     const comics = await this.apiMarvelService.getComics()
-    this.comicsService.generateComicsRareRandom(comics)
+      .catch((error => {
+        if (error.message) {
+          this.snackBar.open(error.message, 'Erro', { duration: 8000 })
+        } else {
+          this.snackBar.open('Erro interno, contate o suporte por favor!', 'Erro', { duration: 8000 })
+        }
+      }));
 
-    this.spinner = false;
-    this.snackBar.open('Cupons raros gerados com sucesso!', 'Sucesso', {
-      duration: 3000
-    })
+    if (comics) {
+      this.comicsService.generateComicsRareRandom(comics)
 
-    this.router.navigate(['/comics/list'])
+      this.spinner = false;
+      this.snackBar.open('Cupons raros gerados com sucesso!', 'Sucesso', {
+        duration: 3000
+      })
+
+      this.router.navigate(['/comics/list'])
+    }
   }
 
 }

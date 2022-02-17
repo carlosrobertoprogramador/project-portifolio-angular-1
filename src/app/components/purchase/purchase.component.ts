@@ -14,15 +14,26 @@ export class PurchaseComponent implements OnInit {
   public comicsCommon: Comic[] = [];
   public sliderImages: string[] = [];
 
-  constructor(private apiComicService: ApiComicService) { }
+  constructor(
+    private apiComicService: ApiComicService,
+    private snackBar: MatSnackBar
+  ) { }
 
   displayedColumns: string[] = ['id', 'name', 'actions'];
   comics: Comic[];
 
   ngOnInit(): void {
-    this.apiComicService.getComicsFavorite().then(comics => {
-      this.comics = comics;
-    })
+    this.apiComicService.getComicsFavorite()
+      .then(comics => {
+        this.comics = comics;
+      })
+      .catch((error => {
+        if (error.message) {
+          this.snackBar.open(error.message, 'Erro', { duration: 8000 })
+        } else {
+          this.snackBar.open('Erro interno, contate o suporte por favor!', 'Erro', { duration: 8000 })
+        }
+      }));
   }
 
 }

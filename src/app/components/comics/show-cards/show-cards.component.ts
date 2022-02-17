@@ -32,11 +32,12 @@ export class ShowCardsComponent implements OnInit {
   }
 
   async navigateCheckout(id) {
-    this.apiComicService.getComicPurchase(id).then(comicPurchase => {
-      this.router.navigate(['/comics/purchase'])
-    }).catch(err => {
-      this.router.navigate([`/comics/${id}/checkout`])
-    })
+    this.apiComicService.getComicPurchase(id)
+      .then(comicPurchase => {
+        this.router.navigate(['/comics/purchase'])
+      }).catch(err => {
+        this.router.navigate([`/comics/${id}/checkout`])
+      })
   }
 
 }

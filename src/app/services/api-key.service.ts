@@ -28,27 +28,15 @@ export class ApiKeyService {
   }
 
   getKeys(): Promise<Key[]> {
-    return this.httpClient.get<Key[]>(`${this.urlLocal}keys`).toPromise().then(
-      result => {
-        return result;
-      }
-    );
+    return this.httpClient.get<Key[]>(`${this.urlLocal}keys`).toPromise()
   }
 
   getKey(id): Promise<Key> {
-    return this.httpClient.get<Key>(`${this.urlLocal}keys/${id}`).toPromise().then(
-      result => {
-        return result;
-      }
-    );
+    return this.httpClient.get<Key>(`${this.urlLocal}keys/${id}`).toPromise()
   }
 
   getKeyByName(name): Promise<Key[]> {
-    return this.httpClient.get<Key[]>(`${this.urlLocal}keys?name=${name}`).toPromise().then(
-      result => {
-        return result;
-      }
-    );
+    return this.httpClient.get<Key[]>(`${this.urlLocal}keys?name=${name}`).toPromise()
   }
 
   setKeysCookie() {
@@ -56,35 +44,46 @@ export class ApiKeyService {
     var privateKey: any = this.cookieService.getCookie('privateKey')
 
     if (!publicKey || !privateKey) {
-      return this.getKeys().then(keys => {
+      return this.getKeys()
+        .then(keys => {
+          if (keys) {
+            let privateKey: any = keys.find(key => {
+              return key.type == 'privateKey'
+            })
+            if (privateKey?.value) {
+              this.cookieService.setCookie('privateKey', privateKey.value, 1)
+            }
 
-        let privateKey: any = keys.find(key => {
-          return key.type == 'privateKey'
+            let publicKey: any = keys.find(key => {
+              return key.type == 'publicKey'
+            })
+
+            if (publicKey?.value) {
+              this.cookieService.setCookie('publicKey', publicKey.value, 1)
+            }
+
+            publicKey = this.cookieService.getCookie('publicKey')
+            privateKey = this.cookieService.getCookie('privateKey')
+
+            if (!publicKey || !privateKey) {
+              this.snackBar.open('Não existe uma ou mais chaves cadastradas, que são pertinentes para o funcionamento do sistema!', 'Alerta', {
+                duration: 8000
+              })
+              this.router.navigate(['/keys/list'])
+            } else {
+              return true;
+            }
+          } else {
+            return false;
+          }
         })
-        if (privateKey?.value) {
-          this.cookieService.setCookie('privateKey', privateKey.value, 1)
-        }
-
-        let publicKey: any = keys.find(key => {
-          return key.type == 'publicKey'
+        .catch(error => {
+          if (error.message) {
+            this.snackBar.open(error.message, 'Erro', { duration: 8000 })
+          } else {
+            this.snackBar.open('Erro interno, contate o suporte por favor!', 'Erro', { duration: 8000 })
+          }
         })
-
-        if (publicKey?.value) {
-          this.cookieService.setCookie('publicKey', publicKey.value, 1)
-        }
-
-        publicKey = this.cookieService.getCookie('publicKey')
-        privateKey = this.cookieService.getCookie('privateKey')
-
-        if (!publicKey || !privateKey) {
-          this.snackBar.open('Não existe uma ou mais chaves cadastradas, que são pertinentes para o funcionamento do sistema!', 'Alerta', {
-            duration: 8000
-          })
-          this.router.navigate(['/keys/list'])
-        } else {
-          return true;
-        }
-      })
     }
   }
 }

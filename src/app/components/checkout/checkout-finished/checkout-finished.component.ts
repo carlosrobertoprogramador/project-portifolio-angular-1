@@ -23,13 +23,14 @@ export class CheckoutFinishedComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.route.snapshot.params.id;
 
-    this.apiMarvelService.getComic(this.id).then((comic => {
+    this.apiMarvelService.getComic(this.id)
+      .then((comic => {
       this.comic = comic;
     })).catch((error => {
       if (error.message) {
-        this.snackBar.open(error.message)
+        this.snackBar.open(error.message, 'Erro', { duration: 8000 })
       } else {
-        this.snackBar.open('Erro interno, contate o suporte por favor!')
+        this.snackBar.open('Erro interno, contate o suporte por favor!', 'Erro', { duration: 8000 })
       }
     }));
   }

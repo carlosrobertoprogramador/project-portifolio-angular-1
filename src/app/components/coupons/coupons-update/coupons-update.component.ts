@@ -23,11 +23,16 @@ export class CouponsUpdateComponent implements OnInit {
   }
 
   submitChange(data): void {
-    this.apiCouponService.updateCoupon(this.id, data).then(result => {
-      this.snackBar.open('Cupom atualizado com sucesso!')
-      this.router.navigate(['/coupons/list'])
-    }).catch(err => {
-      this.snackBar.open('Ocorreu um erro na atualização do cupom, entre em contato com o suporte po favor!')
-    })
+    this.apiCouponService.updateCoupon(this.id, data)
+      .then(result => {
+        this.snackBar.open('Cupom atualizado com sucesso!')
+        this.router.navigate(['/coupons/list'])
+      })
+      .catch(error => {
+        if (error.message) {
+          this.snackBar.open(error.message, 'Erro', { duration: 8000 })
+        } else {
+          this.snackBar.open('Erro interno, contate o suporte por favor!', 'Erro', { duration: 8000 })
+        }      })
   }
 }

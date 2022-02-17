@@ -26,8 +26,12 @@ export class KeysUpdateComponent implements OnInit {
     this.apiKeyService.updateKey(this.id, data).then(result => {
       this.snackBar.open('Chave atualizada com sucesso!')
       this.router.navigate(['/keys/list'])
-    }).catch(err => {
-      this.snackBar.open('Ocorreu um erro na atualização da chave, entre em contato com o suporte po favor!')
+    }).catch(error => {
+      if (error.message) {
+        this.snackBar.open(error.message, 'Erro', { duration: 8000 })
+      } else {
+        this.snackBar.open('Erro interno, contate o suporte por favor!', 'Erro', { duration: 8000 })
+      }
     })
   }
 }

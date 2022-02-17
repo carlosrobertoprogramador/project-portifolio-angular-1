@@ -22,33 +22,34 @@ export class CheckoutCouponComponent implements OnInit {
   }
 
   validateCoupon(value) {
-    this.apiCouponService.getCouponByName(this.form.get('coupon').value).then(result => {
-      if (result.length > 0) {
-        const coupon: Coupon = result[0]
-        if (this.rare && coupon.type === 'common') {
-          this.form.get('discount').setValue(0)
-          this.snackBar.open('O cupom do tipo commum não é válido para este quadrinho raro!', 'Atenção', {
-            duration: 3000
-          })
+    this.apiCouponService.getCouponByName(this.form.get('coupon').value)
+      .then(result => {
+        if (result.length > 0) {
+          const coupon: Coupon = result[0]
+          if (this.rare && coupon.type === 'common') {
+            this.form.get('discount').setValue(0)
+            this.snackBar.open('O cupom do tipo commum não é válido para este quadrinho raro!', 'Atenção', {
+              duration: 3000
+            })
+          } else {
+            this.form.get('discount').setValue(coupon.value)
+            this.snackBar.open('Cupom vinculado com sucesso!', 'Sucesso', {
+              duration: 3000
+            })
+          }
+
         } else {
-          this.form.get('discount').setValue(coupon.value)
-          this.snackBar.open('Cupom vinculado com sucesso!', 'Sucesso', {
+          this.form.get('discount').setValue(0)
+          this.snackBar.open('Não existe este cupom vigente!', 'Atenção', {
             duration: 3000
           })
         }
-
-      } else {
+      }).catch(err => {
         this.form.get('discount').setValue(0)
-        this.snackBar.open('Não existe este cupom vigente!', 'Atenção', {
+        this.snackBar.open('Erro interno, contate o suporte por favor!', 'Erro', {
           duration: 3000
         })
-      }
-    }).catch(err => {
-      this.form.get('discount').setValue(0)
-      this.snackBar.open('Erro interno, contate o suporte por favor!', 'Erro', {
-        duration: 3000
       })
-    })
   }
 
 }
