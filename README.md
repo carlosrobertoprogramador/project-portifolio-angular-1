@@ -143,7 +143,7 @@ Antes de começar, você vai precisar ter instalado em sua máquina as seguintes
 $ git clone git@github.com:carlosrobertoprogramador/selective-process.git
 
 # Acesse a pasta do projeto no seu terminal/cmd
-$ cd ../selective-process-master
+$ cd ../selective-process
 
 # Instale as dependências
 $ npm install
