@@ -30,9 +30,16 @@ Tabela de conteúdos
 
   Este software é apenas para demonstração de codificação, um método de avaliação do conhecimento e senioridade para o ingresso em empresa de desenvolvimento de software.
 
-  O projeto consiste na exibição de uma listagem de quadrinhos da Marvel, permitindo visualizar mais detalhes e possibilitando a compra do mesmo. Existe o meio de compra utilizando cupom de desconto, onde este não é acumulativo por quadrinho, lembrando também que o valor do desconto é somente até o total atingir o limite mínimo de R$ 0,00 (zero real).
+  Ao iniciar a aplicação, a listagem exibe por padrão 10% de quadrinhos raros, 
+  utilizando o local storage para salvar estes quadrinhos.
+
+  As chaves públicas e privadas estão sendo salvas no Cookie.
+
+  Os demais dados salvos estão no banco local db.json na pasta pricipal. 
+
+  O projeto consiste na exibição de uma listagem de quadrinhos da Marvel, permitindo visualizar detalhes, salvar como favorito e possibilitando comprar o mesmo de forma simulada. Existe o meio de compra utilizando cupom de desconto, onde este não é acumulativo por quadrinho, lembrando também que o valor do desconto é somente até o total atingir o limite mínimo de R$ 0,00 (zero real).
   
-  Para mais demonstrações e facilidade no uso do software na avaliação, foi criado um menu administrativo sem bloqueio por autorizações/ permisões onde o usuario pode:
+  Para mais demonstrações e facilidades no uso do software na avaliação, foi criado um menu administrativo sem bloqueio por autorizações/ permisões onde o usuario pode:
   
     *Listar, criar ou atualizar as chaves publicas e privadas de uso da api da marvel.
   

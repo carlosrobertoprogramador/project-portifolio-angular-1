@@ -1,26 +1,19 @@
 {
-  "coupons": [
-  ],
-  "keys": [
-  ],
-  "comics-favorite": [
-  ],
-  "comics-purchase": [
-  ]
-}
-
-# Criar um arquivo db.json na pasta principal do projeto
-# Colar o seguinte conteúdo dentro do arquivo para manter a mesma estrutura do banco de dados que o front end vai consultar:
-<pre><code>
-{
   "coupons": [],
-  "keys": [],
+  "keys": [
+    {
+      "name": "Chave publica",
+      "value": "6187c0cda296b012c9069d564b82de9d",
+      "type": "publicKey",
+      "id": 1
+    },
+    {
+      "name": "Chave privada",
+      "value": "8bcbd1a4c2a05485d19ea6e13cba1619b5e50989",
+      "type": "privateKey",
+      "id": 2
+    }
+  ],
   "comics-favorite": [],
   "comics-purchase": []
 }
-</code></pre>
-
-# Execute a simulação de servidor com json-server
-$ json-server --watch db.json
-
-# O servidor inciará na porta: 3000 - acesse http: //localhost:3000/
