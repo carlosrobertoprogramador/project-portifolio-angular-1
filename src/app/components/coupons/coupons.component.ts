@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiDbJsonService } from 'src/app/services/api-db-json.service';
+import { ApiCouponService } from 'src/app/services/api-coupon.service';
 import { Coupon } from './../../classes/coupon';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-coupons',
@@ -8,15 +9,30 @@ import { Coupon } from './../../classes/coupon';
   styleUrls: ['./coupons.component.scss']
 })
 export class CouponsComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'name', 'type','actions'];
+  displayedColumns: string[] = ['id', 'name', 'type', 'value', 'actions'];
   coupons: Coupon[];
 
-  constructor(private apiDbJsonService: ApiDbJsonService) { }
+  constructor(
+    private snackBar: MatSnackBar,
+    private apiCouponService: ApiCouponService,
+  ) { }
 
   ngOnInit(): void {
-    this.apiDbJsonService.getCoupons().then(coupons => {
+    this.apiCouponService.getCoupons().then(coupons => {
       this.coupons = coupons;
     })
+  }
+
+  remove(id) {
+
+    this.apiCouponService.removeCoupon(id).then(result => {
+      this.coupons = this.coupons.filter((coupon) => {
+        return coupon.id != id
+      })
+    }).catch(err => {
+      this.snackBar.open('Erro interno, contate o suporte por favor!')
+    })
+
   }
 
 }

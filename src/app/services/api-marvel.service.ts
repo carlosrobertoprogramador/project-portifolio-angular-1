@@ -6,20 +6,25 @@ import { Character } from '../classes/character';
 import { Serie } from '../classes/series';
 import { Creator } from '../classes/creator';
 import { Storie } from '../classes/storie';
+import { CookieService } from 'src/app/services/cookie.service';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class ApiMarvelService {
   private md5 = new Md5();
-  private publicKey = "6187c0cda296b012c9069d564b82de9d"
-  private privateKey = "8bcbd1a4c2a05485d19ea6e13cba1619b5e50989"
+  private publicKey = this.cookieService.getCookie('publicKey')
+  private privateKey = this.cookieService.getCookie('privateKey')
   private time = new Date().toDateString()
   private hash = this.md5.appendStr(this.time + this.privateKey + this.publicKey).end()
   private urlMarvel = "http://gateway.marvel.com/v1/public/"
   private paramsMarvel = `ts=${this.time}&apikey=${this.publicKey}&hash=${this.hash}`;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(
+    private httpClient: HttpClient,
+    private cookieService: CookieService,
+  ) {}
 
   getComics(): Promise<Comic[]> {
     return this.httpClient.get<Comic[]>(`${this.urlMarvel}comics?${this.paramsMarvel}`).toPromise().then(

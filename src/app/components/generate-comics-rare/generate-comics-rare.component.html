@@ -1,1 +1,14 @@
-<p>generate-comics-rare works!</p>
+<div fxLayoutAlign="space-around none" style=" background-color: #d7d4db;">
+  <h1 style="color:#673ab7;">
+    <b> Gerador de quadrinhos raros randomicos</b>
+  </h1>
+</div>
+<div fxLayout="column" fxLayoutGap="30px" fxLayoutAlign="space-between center" style="margin-top: 30px;"
+  *ngIf="!spinner">
+  <section fxLayoutAlign="center center">
+    <button mat-raised-button color="primary" (click)="generateComicsRare()"> Gerar quadrinhos Raros </button>
+  </section>
+</div>
+<div fxLayout="column" fxLayoutGap="30px" fxLayoutAlign="space-between center" *ngIf="spinner">
+  <mat-spinner></mat-spinner>
+</div>

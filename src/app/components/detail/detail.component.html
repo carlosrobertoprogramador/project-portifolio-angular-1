@@ -1,0 +1,120 @@
+<div fxLayoutAlign="space-around none" style=" background-color: #d7d4db;">
+  <h1 style="color:#673ab7;">
+    <b> Detalhes do quadrinho</b>
+  </h1>
+</div>
+<div *ngIf="comic">
+  <div style="
+        position: fixed;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        opacity: 0.1;
+        height: 100%; width: 100%;
+        background: url({{ comic.thumbnail.path+'.'+comic.thumbnail.extension }});
+    ">
+  </div>
+  <div class="content">
+    <div fxLayout="row wrap" fxLayoutGap="100 grid">
+      <div fxFlex="32" fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="32" fxFlex.lg="32" fxFlex.xl="32"
+        style=" margin-bottom: 30px;">
+        <div fxLayout="column">
+          <section fxLayoutAlign="center center">
+            <mat-card fxFlex="33" fxFlex.xs="50" fxFlex.sm="30" fxFlex.md="100" fxFlex.lg="80" fxFlex.xl="50">
+              <picture>
+                <img [ngClass]="[isPurchase ? 'img-height-max' : '']" mat-card-image
+                  src="{{ comic.thumbnail.path+'.'+comic.thumbnail.extension }}" alt="Photo of a Shiba Inu"
+                  class="card-image">
+              </picture>
+              <mat-card-actions *ngIf="!isPurchase">
+                <div class="flex-container" fxLayout="column" fxLayoutAlign="space-around none">
+                  <button mat-flat-button color="accent" routerLink="/comics/{{ comic.id }}/checkout">
+                    <mat-icon>attach_money</mat-icon> QUERO COMPRAR
+                  </button>
+                </div>
+              </mat-card-actions>
+            </mat-card>
+          </section>
+        </div>
+      </div>
+      <div fxFlex="67" fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="67" fxFlex.lg="67" fxFlex.xl="67"
+        style=" margin-left: 10px;">
+        <div class="flex-container" fxLayout="column" fxLayoutAlign="space-around none">
+          <section>
+            <div class="flex-container" fxLayout="row" fxLayoutAlign="start none">
+              <div *ngIf="rare" style="margin-right: 30px; ">
+                <mat-icon style="transform: scale(1.5); color: rgb(0, 255, 13)">star</mat-icon>
+              </div>
+              <div>
+                <h1>
+                  <p>
+                    <b>
+                      {{ comic.title }}
+                    </b>
+                  </p>
+                </h1>
+              </div>
+            </div>
+          </section>
+          <section *ngIf="comic.prices">
+            <h1>
+              {{ getPrice(comic.prices)| currency:'BRL':true }}
+            </h1>
+          </section>
+          <section fxLayoutAlign="space-around center" style="padding-top: 30px;">
+            <button [disabled]="isFavorite" (click)="addFavorite()" mat-fab color="primary"
+              aria-label="Example icon button with a delete icon">
+              <mat-icon>favorite</mat-icon>
+            </button>
+            <button disabled mat-fab color="primary" aria-label="Example icon button with a delete icon">
+              <mat-icon>loyalty</mat-icon>
+            </button>
+            <button disabled mat-fab color="primary" aria-label="Example icon button with a delete icon">
+              <mat-icon>share</mat-icon>
+            </button>
+          </section>
+          <section fxLayoutAlign="space-around center" style="padding-top: 30px;">
+            <mat-tab-group style="width: 100%;">
+              <mat-tab label="Descrição">
+                <div *ngIf="comic.description ">
+                  <p style="padding-top: 30px;">
+                    {{ comic.description }}
+                  </p>
+                </div>
+                <div *ngIf="!comic.description ">
+                  <p style="padding-top: 30px;"> Não existe descrição para ser exibida! </p>
+                </div>
+              </mat-tab>
+              <mat-tab label="Criadores">
+                <div style="padding-top: 30px;" *ngIf="comic.creators.items.length > 0 ">
+                  <div *ngFor="let creator of comic.creators.items" fxLayout="collum" fxLayoutAlign="start center">
+                    <p fxFlex="33"> Nome: <b>{{ creator.name }}</b></p>
+                    <p> Cargo: <b>{{ creator.role }}</b></p>
+                  </div>
+                </div>
+                <div *ngIf="comic.creators.items.length === 0 ">
+                  <p style="padding-top: 30px;"> Não existem criadores para serem exibidos! </p>
+                </div>
+              </mat-tab>
+              <mat-tab label="Série">
+                <div *ngIf="comic.series">
+                  <p style="padding-top: 30px;"> {{ comic.series.name }}
+                  </p>
+                </div>
+                <div *ngIf="!comic.series">
+                  <p style="padding-top: 30px;"> Não existem series para serem exibidas! </p>
+                </div>
+              </mat-tab>
+              <mat-tab label="Resumo">
+                <p style="padding-top: 30px;"> Quantidade de páginas: <b>{{ comic.pageCount }}</b>
+                </p>
+                <p style="padding-top: 5px;"> Formato: <b>{{ comic.format }}</b>
+                </p>
+              </mat-tab>
+            </mat-tab-group>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

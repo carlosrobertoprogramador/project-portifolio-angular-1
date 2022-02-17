@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiDbJsonService } from 'src/app/services/api-db-json.service';
+import { ApiCouponService } from 'src/app/services/api-coupon.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class CouponsCreateComponent implements OnInit {
   constructor(
-    private apiDbJsonService: ApiDbJsonService,
+    private apiCouponService: ApiCouponService,
     private snackBar: MatSnackBar,
     private router: Router
 
@@ -20,7 +20,7 @@ export class CouponsCreateComponent implements OnInit {
   }
 
   submitChange(data): void {
-    this.apiDbJsonService.createCoupon(data).then(result => {
+    this.apiCouponService.createCoupon(data).then(result => {
       this.snackBar.open('Cupom cadastrado com sucesso!')
       this.router.navigate(['/coupons/list'])
     }).catch(err => {

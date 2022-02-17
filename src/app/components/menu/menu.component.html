@@ -3,11 +3,11 @@
     <mat-icon>menu</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item>
+    <button mat-menu-item routerLink="/keys/list">
       <mat-icon>border_color</mat-icon>
-      <span>Cadastrar dados para busca</span>
+      <span>Cadastrar chaves da marvel</span>
     </button>
-    <button mat-menu-item>
+    <button mat-menu-item [routerLink]="['/comics/generate-rare']">
       <mat-icon>refresh</mat-icon>
       <span>Gerar novos quadrinhos raros</span>
     </button>
@@ -16,12 +16,17 @@
       <span>Gerar novos cupons</span>
     </button>
   </mat-menu>
-  <span> TESTE FRONT-END ANGULAR</span>
+  <span routerLink="/comics/list" style="cursor: pointer"> FRONT-END ANGULAR</span>
+  <button routerLink="/comics/list" mat-icon-button class="example-icon favorite-icon">
+    <mat-icon>home</mat-icon>
+  </button>
   <span class="example-spacer"></span>
-  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+  <button routerLink="/comics/favorites" mat-icon-button class="example-icon favorite-icon"
+    aria-label="Example icon-button with heart icon">
     <mat-icon>favorite</mat-icon>
   </button>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-    <mat-icon>share</mat-icon>
+  <button routerLink="/comics/purchase" mat-icon-button class="example-icon favorite-icon"
+    aria-label="Example icon-button with heart icon">
+    <mat-icon>attach_money</mat-icon>
   </button>
 </mat-toolbar>

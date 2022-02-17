@@ -1,0 +1,46 @@
+  <div class="content">
+    <div style="margin: 40px 0">
+      <h1><b>---- {{ name }} ----</b></h1>
+      <mat-divider></mat-divider>
+    </div>
+    <div fxLayout="row wrap" fxLayoutGap="15px grid">
+      <div fxFlex="25%" fxFlex.xs="50%" fxFlex.sm="33%" fxFlex.md="25%"
+        fxFlex.lg="20%" fxFlex.xl="14%" style=" margin-bottom: 30px;" *ngFor="let comic of comics; let i = index">
+        <mat-card class="mat-elevation-z4" class="shadow-card">
+          <img mat-card-image src="{{comic.thumbnail.path}}.{{comic.thumbnail.extension }}" alt="{{ comic.title }}"
+            class="pointer" (click)="navigateDetail(comic.id)">
+          <mat-card-content class="pointer" (click)="navigateDetail(comic.id)">
+            <div class="flex-container" fxLayout="row" fxLayoutAlign="start none">
+              <div *ngIf="rare" style="margin-right: 5px; ">
+                <mat-icon style="transform: scale(0.8); color: rgb(0, 255, 13); margin-top: -4px; ">star</mat-icon>
+              </div>
+              <div>
+                <p>
+                  <b>
+                    {{comic.title}}
+                  </b>
+                </p>
+              </div>
+            </div>
+            <h5>
+              <p class="max-line">
+                {{getCreatorsName(comic.creators.items)}}
+              </p>
+            </h5>
+          </mat-card-content>
+          <mat-card-actions>
+            <div fxLayout="row" fxLayoutAlign="space-around center">
+              <button mat-mini-fab aria-label="Example icon button with a delete icon" class="shadow-button pointer"
+                (click)="navigateDetail(comic.id)">
+                <mat-icon>list</mat-icon>
+              </button>
+              <button mat-mini-fab color="primary" aria-label="Example icon button with a bookmark icon"
+                (click)="navigateCheckout(comic.id)" class="shadow-button pointer">
+                <mat-icon>attach_money</mat-icon>
+              </button>
+            </div>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </div>

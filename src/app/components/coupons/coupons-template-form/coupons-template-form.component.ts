@@ -2,7 +2,7 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { ApiDbJsonService } from 'src/app/services/api-db-json.service';
+import { ApiCouponService } from 'src/app/services/api-coupon.service';
 
 @Component({
   selector: 'app-coupons-template-form',
@@ -21,14 +21,14 @@ export class CouponsTemplateFormComponent implements OnInit {
   public isSubmted: boolean = false;
 
   constructor(
-    private apiDbJsonService: ApiDbJsonService,
+    private apiCouponService: ApiCouponService,
     private builder: FormBuilder,
   ) { }
 
   ngOnInit(): void {
     this.form = this.createForm();
     if (this.id) {
-      this.apiDbJsonService.getCoupon(this.id).then(coupon => {
+      this.apiCouponService.getCoupon(this.id).then(coupon => {
         this.fill(coupon)
       })
     }
@@ -38,6 +38,7 @@ export class CouponsTemplateFormComponent implements OnInit {
   fill(data) {
     if (data) {
       this.form.get('name').setValue(data.name);
+      this.form.get('value').setValue(data.value);
       this.form.get('type').setValue(data.type);
     }
   }
@@ -45,6 +46,7 @@ export class CouponsTemplateFormComponent implements OnInit {
   createForm() {
     return this.builder.group({
       name: ['', Validators.required],
+      value: ['', Validators.required],
       type: ['', Validators.required],
     });
   }

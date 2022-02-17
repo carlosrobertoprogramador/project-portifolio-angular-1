@@ -1,19 +1,21 @@
 import { Injectable } from '@angular/core';
 import { StorageService } from './storage.service';
 import { Comic } from './../classes/comic';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ComicsService {
-
   constructor(private storageService: StorageService) { }
 
-  generateNumbersRandom(comics) {
-    const quantityComicsRare = this.getQuantityComicsRare(comics);
+  generateComicsRareRandom(comics, qtdRare = null) {
+    if (qtdRare == null) {
+      qtdRare = this.getQuantityComicsRare(comics);
+    }
 
-    if (quantityComicsRare > 0) {
-      const numbersRandom: number[] = this.getNumbersRandom(1, comics.length, quantityComicsRare);
+    if (qtdRare > 0) {
+      const numbersRandom: number[] = this.getNumbersRandom(1, comics.length, qtdRare);
       const comicRares = [];
       comics.map((comic, index) => {
         index++;
@@ -22,7 +24,7 @@ export class ComicsService {
         }
       })
       this.storageService.setStorage('comicsRares', comicRares)
-
+      return comicRares;
     }
   }
 

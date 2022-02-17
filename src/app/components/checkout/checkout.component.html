@@ -1,3 +1,8 @@
+<div fxLayoutAlign="space-around none" style=" background-color: #d7d4db;">
+  <h1 style="color:#673ab7">
+    <b> Comprar quadrinho</b>
+  </h1>
+</div>
 <div *ngIf="comic">
   <div style="
         position: fixed;
@@ -10,32 +15,36 @@
     ">
   </div>
   <form [formGroup]="form" *ngIf="form">
-    <div fxLayout="collum" style="padding: 30px;">
-      <div fxFlex="23">
-        <div fxLayout="column">
-          <section fxLayoutAlign="center center">
-            <app-checkout-image [comic]="comic"></app-checkout-image>
-          </section>
-          <section fxLayoutAlign="center center" style="margin-top: 10px;">
-            <app-checkout-coupon [form]="form" ></app-checkout-coupon>
-          </section>
-        </div>
-      </div>
-      <div fxFlex="87" style="padding-left: 30px;">
-        <div class="flex-container" fxLayout="column" fxLayoutAlign="space-around none">
+    <div class="content" fxLayoutGap="15px grid">
+      <div fxLayout="column" fxLayoutGap="15px grid" fxLayoutAlign="center center">
+        <div fxLayout="row wrap" fxLayoutAlign="center center">
           <section>
             <app-checkout-title [comic]="comic" [rare]="rare"></app-checkout-title>
           </section>
-          <section>
-            <div fxLayout="collum" style="padding-top: 30px;">
-              <div fxFlex="77">
+        </div>
+        <div fxLayout="row wrap" fxLayoutGap="15px grid" fxLayoutAlign="center none" >
+          <div fxLayout="row wrap" fxLayoutGap="15px grid" fxLayoutAlign="center start" fxFlex.md="30" fxFlex.lg="30"
+            fxFlex.xl="30">
+            <section fxFlex="32" fxFlex.xs="50" fxFlex.sm="50" fxFlex.md="100" fxFlex.lg="100" fxFlex.xl="100">
+              <app-checkout-image [comic]="comic"></app-checkout-image>
+            </section>
+            <section fxFlex="32" fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="100" fxFlex.lg="100" fxFlex.xl="100">
+              <app-checkout-coupon [form]="form" [rare]="rare"></app-checkout-coupon>
+            </section>
+          </div>
+          <div fxLayout="row wrap" fxLayoutGap="15px grid" fxLayoutAlign="center start" fxFlex.md="72" fxFlex.lg="72"
+            fxFlex.xl="72">
+            <section fxFlex="32" fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="50" fxFlex.lg="50" fxFlex.xl="50">
+              <div>
                 <app-checkout-data [form]="form"></app-checkout-data>
               </div>
-              <div fxFlex="33">
-                <app-checkout-detail [form]="form"></app-checkout-detail>
+            </section>
+            <section fxFlex="32" fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="50" fxFlex.lg="50" fxFlex.xl="50">
+              <div>
+                <app-checkout-detail [form]="form" (paymentChange)="paymentChange($event)"></app-checkout-detail>
               </div>
-            </div>
-          </section>
+            </section>
+          </div>
         </div>
       </div>
     </div>

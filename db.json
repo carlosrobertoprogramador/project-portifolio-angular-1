@@ -1,19 +1,26 @@
 {
   "coupons": [
-    {
-      "name": "PROMO10",
-      "type": "common",
-      "id": 1
-    },
-    {
-      "name": "PROMO18",
-      "type": "rare",
-      "id": 2
-    },
-    {
-      "name": "PROMO20",
-      "type": "common",
-      "id": 3
-    }
+  ],
+  "keys": [
+  ],
+  "comics-favorite": [
+  ],
+  "comics-purchase": [
   ]
 }
+
+# Criar um arquivo db.json na pasta principal do projeto
+# Colar o seguinte conteúdo dentro do arquivo para manter a mesma estrutura do banco de dados que o front end vai consultar:
+<pre><code>
+{
+  "coupons": [],
+  "keys": [],
+  "comics-favorite": [],
+  "comics-purchase": []
+}
+</code></pre>
+
+# Execute a simulação de servidor com json-server
+$ json-server --watch db.json
+
+# O servidor inciará na porta: 3000 - acesse http: //localhost:3000/

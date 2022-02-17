@@ -1,1 +1,22 @@
-<p>checkout-finished works!</p>
+<div *ngIf="comic" fxLayout="column" fxLayoutGap="30px" fxLayoutAlign="space-between center">
+  <section fxLayoutAlign="center center">
+    <mat-card fxFlex="100">
+      <mat-card-title fxLayoutAlign="center center">
+        <h1>Quadrinho comprado com sucesso!</h1>
+      </mat-card-title>
+    </mat-card>
+  </section>
+  <section fxLayoutAlign="center center">
+    <mat-card fxFlex="75">
+      <picture>
+        <img mat-card-image src="{{ comic.thumbnail.path+'.'+comic.thumbnail.extension }}" alt="Photo of a Shiba Inu"
+          class="card-image">
+      </picture>
+    </mat-card>
+  </section>
+  <section fxLayoutAlign="center center">
+    <button mat-raised-button color="primary" routerLink="/">
+      <mat-icon>check</mat-icon> Sair
+    </button>
+  </section>
+</div>

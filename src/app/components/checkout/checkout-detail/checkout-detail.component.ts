@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 @Component({
@@ -8,16 +8,24 @@ import { FormGroup } from '@angular/forms';
 })
 export class CheckoutDetailComponent implements OnInit {
   @Input() form: FormGroup;
+  @Output() paymentChange = new EventEmitter<any>();
+
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  getTotal(): number {
+    const discount = this.form.get('discount').value
+    const price = this.form.get('price').value
+    let total = price - discount;
+    total = total >= 0 ? total : 0.00
+    return total;
+  }
+
   isPayment(): boolean {
     const methodPayment = this.form.get('methodPayment').value
-    console.log(methodPayment);
-
     if (methodPayment == 'bol') {
       return false;
     } else if (methodPayment == 'card') {
@@ -33,9 +41,10 @@ export class CheckoutDetailComponent implements OnInit {
       }
     }
     return true;
+  }
 
-
-
+  onPayment(): void {
+    this.paymentChange.emit(true)
   }
 
 }

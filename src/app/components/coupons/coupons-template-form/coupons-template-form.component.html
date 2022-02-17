@@ -10,6 +10,13 @@
           <div *ngIf="isSubmted && form.get('name').errors" class="text-required">Campo obrigatorio</div>
         </div>
         <div>
+          <h4>Valor de desconto do cupom</h4>
+          <mat-form-field style="width: 100%" [ngClass]="isSubmted && form.get('value').errors ? 'required': ''">
+            <input type='number' formControlName="value" matInput placeholder="Ex. 10">
+          </mat-form-field>
+          <div *ngIf="isSubmted && form.get('value').errors" class="text-required">Campo obrigatorio</div>
+        </div>
+        <div>
           <h4>Tipo do cupom</h4>
           <mat-form-field appearance="fill" style="width: 100%"
             [ngClass]="isSubmted && form.get('type').errors ? 'required': ''">
@@ -26,6 +33,6 @@
     </form>
   </section>
   <section fxLayoutAlign="center center">
-    <button mat-raised-button color="primary" (click)="onSubmit()"> Cadastrar </button>
+    <button mat-raised-button color="primary" (click)="onSubmit()"> Salvar </button>
   </section>
 </div>
