@@ -8,3 +8,8 @@
   <app-show-cards [comics]="comicsCommon" [name]="'OUTROS'">
   </app-show-cards>
 </div>
+
+<div fxLayout="column" fxLayoutGap="30px" fxLayoutAlign="space-between center"
+  *ngIf="comicsRare.length == 0 && comicsCommon.length == 0">
+  <mat-spinner></mat-spinner>
+</div>

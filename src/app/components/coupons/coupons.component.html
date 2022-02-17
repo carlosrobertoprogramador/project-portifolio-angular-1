@@ -3,7 +3,7 @@
     <b> Lista de cupons</b>
   </h1>
 </div>
-<div fxLayout="column" fxLayoutGap="30px" fxLayoutAlign="space-between center" style="margin-top: 30px;">
+<div fxLayout="column" fxLayoutGap="30px" fxLayoutAlign="space-between center" style="margin-top: 30px;" *ngIf="coupons">
   <section fxLayoutAlign="center center">
     <button mat-raised-button color="primary" routerLink="/coupons/create"> Cadastrar novo </button>
   </section>
@@ -37,4 +37,8 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
   </section>
+</div>
+
+<div fxLayout="column" fxLayoutGap="30px" fxLayoutAlign="space-between center" *ngIf="!coupons">
+  <mat-spinner></mat-spinner>
 </div>

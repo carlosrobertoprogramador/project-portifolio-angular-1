@@ -3,7 +3,7 @@
     <b> Lista de chaves da Marvel</b>
   </h1>
 </div>
-<div fxLayout="column" fxLayoutGap="30px" fxLayoutAlign="space-between center" style="margin-top: 30px;">
+<div fxLayout="column" fxLayoutGap="30px" fxLayoutAlign="space-between center" style="margin-top: 30px;" *ngIf="keys">
   <section fxLayoutAlign="center center">
     <button mat-raised-button color="primary" routerLink="/keys/create"> Cadastrar novo </button>
   </section>
@@ -36,4 +36,8 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
   </section>
+</div>
+
+<div fxLayout="column" fxLayoutGap="30px" fxLayoutAlign="space-between center" *ngIf="!keys">
+  <mat-spinner></mat-spinner>
 </div>
