@@ -33,6 +33,7 @@ export class CouponsUpdateComponent implements OnInit {
           this.snackBar.open(error.message, 'Erro', { duration: 8000 })
         } else {
           this.snackBar.open('Erro interno, contate o suporte por favor!', 'Erro', { duration: 8000 })
-        }      })
+        }
+      })
   }
 }

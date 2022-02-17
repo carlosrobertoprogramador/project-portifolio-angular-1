@@ -72,12 +72,17 @@ export class CheckoutComponent implements OnInit {
   }
 
   paymentChange(event): void {
-    this.addPurchase().then(result => {
-      this.snackBar.open('Comprado com sucesso!', 'Sucesso', { duration: 3000 })
-      this.router.navigate([this.router.url + '/finished'])
-    }).catch(err => {
-      this.snackBar.open('Erro interno, contate o suporte por favor!', 'Erro', { duration: 3000 })
-    })
+    this.addPurchase()
+      .then(result => {
+        this.snackBar.open('Comprado com sucesso!', 'Sucesso', { duration: 3000 })
+        this.router.navigate([this.router.url + '/finished'])
+      }).catch(error => {
+        if (error.message) {
+          this.snackBar.open(error.message, 'Erro', { duration: 8000 })
+        } else {
+          this.snackBar.open('Erro interno, contate o suporte por favor!', 'Erro', { duration: 8000 })
+        }
+      })
   }
 
   addPurchase() {
