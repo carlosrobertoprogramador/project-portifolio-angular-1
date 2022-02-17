@@ -14,7 +14,6 @@ Tabela de conteúdos
 =================
 <!--ts-->
    * [Sobre o projeto](#sobre)
-   * [Funcionalidades](#funcionalidades)
    * [Como executar o projeto](#como-executar-o-projeto)
      * Pré-requisitos
      * Criação do banco de dados e api
@@ -31,13 +30,15 @@ Tabela de conteúdos
   Este software é apenas para demonstração de codificação, um método de avaliação do conhecimento para o ingresso em empresa de desenvolvimento de software.
 
 Menu  
-    *O menu possui o titulo que redireciona para a listagem de quadrinhos e um botão 'HOME' que faz o mesmo.
 
+    *O menu possui o titulo que redireciona para a listagem de quadrinhos e um botão 'HOME' que faz o mesmo.
+    
     *Ao lado esquerdo do título foi criado um botão de menus administrativos.
 
     *No canto direito dois botões, um de quadrinhos favoritos e outro de quadrinhos comprados.
 
 Listagem  
+
     *Ao iniciar a aplicação, a listagem exibe por padrão 10% de quadrinhos raros com relação a quantidade total retornada da API sem filtro. Foi divido em blocos a listagem de 'RARIDADES' e 'OUTROS' para facilitar a visualização, os quadrinhos raros possuem uma estrela verde deixando o mesmo mais especial.
 
     *Cada quadrinho exibido possui dois botões, 'DETALHES' e 'COMPRAR', clicar com mouse no card redireciona para detalhes também. 
@@ -45,11 +46,13 @@ Listagem
     *Foi criado também um carrousel que exibe 'SOMENTE' quandrinhos raros, em caso de geração randomica setar 0 quadrinhos raros o carrousel não será exibido. 
 
 Detalhes  
+
     *Em detalhes é possivel visualizar a estrela de raridade, titulo, valor, descrição, criadores, serie, resumo e uma imagem do quadrinho.
 
     *Existem dois botões um de favoritar e outro comprar.
 
 Comprar  
+
     *Em comprar é possivel visualizar a estrela de raridade, titulo, valor e uma imagem do quadrinho.
 
     *Existe o campo para setar o cupom de desconto que deve existir na listagem de cupons da parte administrativa para ser validado de acordo com os parametros do mesmo, o cupom quando validado automaticamente desconta no valor do quadrinho, mas nunca fica menor que R$ 0,00. O cupom raro funciona para quadrinhos raros e comuns, mas o cupom comum não funciona para quadrinhos raros.
@@ -59,20 +62,25 @@ Comprar
     *Ao realizar o pagamento é exbida uma página de succeso para o usuario com a imagem do quadrinho e um botao sair.
 
 Listagem de Compras
+
     *Exibe os quadrinhos comprados e um botão de detalhes.
 
 Listagem de Favoritos
+
     *Exibe os quadrinhos favoritados, um botão de detalhes e um botão para remover como favorito.
 
 Cadastrar chaves da marvel
+
     *Exibe as chaves cadastradas, um botao para cadastrar novo e um para editar.
 
     *Foi criado para quando o usuario realizaar os testas do software não necessiar mexer no código para setar sua chave pessoal.
 
 Gerar quadrinhos raros
+
     *Um botão que gera uma quantidade randomica de quadrinhos raros aleatoriamente.
 
 Gerar novos cupons
+
      *Exibe os cupons raros e comuns, um botão para criar, um botão de editar e um botão para remover.
 
 Quadrinhos RAROS são salvos no local storage.
@@ -83,70 +91,6 @@ Os demais dados salvos estão no banco local db.json na pasta pricipal.
 
 Caso não existir uma das chaves publica e privada cadastrada no dv.json ou Cookie o usuario é redirecionado para cadastrar uma nova, as rotas são barradas o acesso caso isto ocorra.
   
----
-
-<a id="funcionalidades"></a>
-## Funcionalidades
-
-- [x] Listagem de quadrinhos do tipo Raros e Comuns:
-  - [x] Botão para visualizar detalhes um quadrinho
-  - [x] Botão para comprar um quadrinho
-  - [x] Estrela de marcação para quando um quadrinho é do tipo Raro
-
-- [x] Detalhes do quadrinho:
-  - [x] Botão para salvar um quadrinho como favorito, bloqueio para quando salvo
-  - [x] Botão para comprar um quadrinho, bloqueio para quando comprado
-  - [x] Estrela de marcação para quando um quadrinho é do tipo Raro
-    - nome
-    - descrição
-    - criadores
-    - serie
-    - resumo
-    - valor
- 
- - [x] Compras do quadrinho:
-    - [x] Campo e Botão para inserir e validar um cupom.
-    - [x] Campo para escolher o método de pagamento.
-    - [x] Campo para escolher o método de pagamento do cartão.
-    - [x] Campo para escolher as parcelas do cartão. 
-    - [x] Campo para setar o numero do cartão. 
-    - [x] Botão para pagamento.
-      - nome
-      - valor do produto
-      - valor de desconto
-      - valor total
-      - resumo
-      - valor
-
- - [x] Favoritos:
-    - [x] Botão para ver detalhes do quadrinho.
-    - [x] Botão para remover de favoritos.
-    - [x] Listagem dos quadrinhos favoritados.
-
- - [x] Compras:
-    - [x] Botão para ver detalhes do quadrinho.
-    - [x] Listagem dos quadrinhos comprados.
-
- 
-- [x] Cadastrar chaves:
-    - [x] Botão para criar nova chave
-    - [x] Botão para editar uma chave
-    - [x] Listagem das chaves cadastradas
-
-- [x] Cadastrar cupons:
-    - [x] Botão para criar um cupom
-    - [x] Botão para editar um cupom
-    - [x] Botão para remover um cupom
-    - [x] Listagem dos cupons cadastrados
-
-- [x] Gerar quadrinhos raros:
-    - [x] Botão para gerar novos quadrinhos raros de quandidade randomica
-
-- [x] Menu:
-    - [x] Botão para exibir botões administrativos
-    - [x] Botão e título para navegar na página principal (HOME)
-    - [x] Botão para visualizar favoritos
-    - [x] Botão para visualizar compras
 ---
 
 <a id="como-executar"></a>
