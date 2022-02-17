@@ -28,25 +28,61 @@ Tabela de conteúdos
 <a id="sobre"></a>
 ## Sobre o projeto
 
-  Este software é apenas para demonstração de codificação, um método de avaliação do conhecimento e senioridade para o ingresso em empresa de desenvolvimento de software.
+  Este software é apenas para demonstração de codificação, um método de avaliação do conhecimento para o ingresso em empresa de desenvolvimento de software.
 
-  Ao iniciar a aplicação, a listagem exibe por padrão 10% de quadrinhos raros, 
-  utilizando o local storage para salvar estes quadrinhos.
+Menu  
+    *O menu possui o titulo que redireciona para a listagem de quadrinhos e um botão 'HOME' que faz o mesmo.
 
-  As chaves públicas e privadas estão sendo salvas no Cookie.
+    *Ao lado esquerdo do título foi criado um botão de menus administrativos.
 
-  Os demais dados salvos estão no banco local db.json na pasta pricipal. 
+    *No canto direito dois botões, um de quadrinhos favoritos e outro de quadrinhos comprados.
 
-  O projeto consiste na exibição de uma listagem de quadrinhos da Marvel, permitindo visualizar detalhes, salvar como favorito e possibilitando comprar o mesmo de forma simulada. Existe o meio de compra utilizando cupom de desconto, onde este não é acumulativo por quadrinho, lembrando também que o valor do desconto é somente até o total atingir o limite mínimo de R$ 0,00 (zero real).
+Listagem  
+    *Ao iniciar a aplicação, a listagem exibe por padrão 10% de quadrinhos raros com relação a quantidade total retornada da API sem filtro. Foi divido em blocos a listagem de 'RARIDADES' e 'OUTROS' para facilitar a visualização, os quadrinhos raros possuem uma estrela verde deixando o mesmo mais especial.
+
+    *Cada quadrinho exibido possui dois botões, 'DETALHES' e 'COMPRAR', clicar com mouse no card redireciona para detalhes também. 
+    
+    *Foi criado também um carrousel que exibe 'SOMENTE' quandrinhos raros, em caso de geração randomica setar 0 quadrinhos raros o carrousel não será exibido. 
+
+Detalhes  
+    *Em detalhes é possivel visualizar a estrela de raridade, titulo, valor, descrição, criadores, serie, resumo e uma imagem do quadrinho.
+
+    *Existem dois botões um de favoritar e outro comprar.
+
+Comprar  
+    *Em comprar é possivel visualizar a estrela de raridade, titulo, valor e uma imagem do quadrinho.
+
+    *Existe o campo para setar o cupom de desconto que deve existir na listagem de cupons da parte administrativa para ser validado de acordo com os parametros do mesmo, o cupom quando validado automaticamente desconta no valor do quadrinho, mas nunca fica menor que R$ 0,00. O cupom raro funciona para quadrinhos raros e comuns, mas o cupom comum não funciona para quadrinhos raros.
+    
+    *Existe o campo de metodo de pagamento, com boleto e cartão, caso boleto o botao de pagamento ja é liberado automaticamente mas se for cartão, deve-se preencher os demais campos, metodo de pagamento do catão, debito ou credito, caso credito deve-se setar a parcela e por fim o campo de numero do cartão para assim então o botao de pagamento ser liberado.
+
+    *Ao realizar o pagamento é exbida uma página de succeso para o usuario com a imagem do quadrinho e um botao sair.
+
+Listagem de Compras
+    *Exibe os quadrinhos comprados e um botão de detalhes.
+
+Listagem de Favoritos
+    *Exibe os quadrinhos favoritados, um botão de detalhes e um botão para remover como favorito.
+
+Cadastrar chaves da marvel
+    *Exibe as chaves cadastradas, um botao para cadastrar novo e um para editar.
+
+    *Foi criado para quando o usuario realizaar os testas do software não necessiar mexer no código para setar sua chave pessoal.
+
+Gerar quadrinhos raros
+    *Um botão que gera uma quantidade randomica de quadrinhos raros aleatoriamente.
+
+Gerar novos cupons
+     *Exibe os cupons raros e comuns, um botão para criar, um botão de editar e um botão para remover.
+
+Quadrinhos RAROS são salvos no local storage.
+
+As chaves públicas e privadas estão sendo salvas no Cookie.
+
+Os demais dados salvos estão no banco local db.json na pasta pricipal.
+
+Caso não existir uma das chaves publica e privada cadastrada no dv.json ou Cookie o usuario é redirecionado para cadastrar uma nova, as rotas são barradas o acesso caso isto ocorra.
   
-  Para mais demonstrações e facilidades no uso do software na avaliação, foi criado um menu administrativo sem bloqueio por autorizações/ permisões onde o usuario pode:
-  
-    *Listar, criar ou atualizar as chaves publicas e privadas de uso da api da marvel.
-  
-    *Gerar novos quadrinhos raros, estes são gerados com quantidade randômica.
-  
-    *Listar, criar, atualizar, remover novos cupons de descontos para utilizar na compra dos quadrinhos.
-
 ---
 
 <a id="funcionalidades"></a>

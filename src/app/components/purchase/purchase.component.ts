@@ -23,7 +23,7 @@ export class PurchaseComponent implements OnInit {
   comics: Comic[];
 
   ngOnInit(): void {
-    this.apiComicService.getComicsFavorite()
+    this.apiComicService.getComicsPurchase()
       .then(comics => {
         this.comics = comics;
       })

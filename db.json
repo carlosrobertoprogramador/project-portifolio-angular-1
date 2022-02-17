@@ -1,5 +1,12 @@
 {
-  "coupons": [],
+  "coupons": [
+    {
+      "name": "adasd",
+      "value": 3,
+      "type": "rare",
+      "id": 1
+    }
+  ],
   "keys": [
     {
       "name": "Chave publica",
@@ -14,6 +21,24 @@
       "id": 2
     }
   ],
-  "comics-favorite": [],
-  "comics-purchase": []
+  "comics-favorite": [
+    {
+      "id": 331,
+      "name": "Gun Theory (2003) #4"
+    }
+  ],
+  "comics-purchase": [
+    {
+      "id": 331,
+      "name": "Gun Theory (2003) #4",
+      "price": 2.5,
+      "discount": 0,
+      "total": 2.5,
+      "coupon": "",
+      "methodPayment": "bol",
+      "methodPaymentCard": "",
+      "installmentPaymentCard": "",
+      "cardNumber": ""
+    }
+  ]
 }
