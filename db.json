@@ -1,44 +1,10 @@
 {
   "coupons": [
-    {
-      "name": "adasd",
-      "value": 3,
-      "type": "rare",
-      "id": 1
-    }
   ],
   "keys": [
-    {
-      "name": "Chave publica",
-      "value": "6187c0cda296b012c9069d564b82de9d",
-      "type": "publicKey",
-      "id": 1
-    },
-    {
-      "name": "Chave privada",
-      "value": "8bcbd1a4c2a05485d19ea6e13cba1619b5e50989",
-      "type": "privateKey",
-      "id": 2
-    }
   ],
   "comics-favorite": [
-    {
-      "id": 331,
-      "name": "Gun Theory (2003) #4"
-    }
   ],
   "comics-purchase": [
-    {
-      "id": 331,
-      "name": "Gun Theory (2003) #4",
-      "price": 2.5,
-      "discount": 0,
-      "total": 2.5,
-      "coupon": "",
-      "methodPayment": "bol",
-      "methodPaymentCard": "",
-      "installmentPaymentCard": "",
-      "cardNumber": ""
-    }
   ]
 }
